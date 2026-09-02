@@ -37,8 +37,22 @@ class CalculatorViewModel: ViewModel() {
                 }else{
                     getCorrectParenthises()
                 }
+                val isOperator = symbol in listOf("+","-","*","/")
+                if (isOperator) {
+                    if (expression.isEmpty()) {
+                        if (symbol != "-") return
+                    } else {
+                        val lastChar = expression.last()
+
+                        if (lastChar == '(') {
+                            if (symbol != "-") return
+                        } else if (lastChar in listOf('+', '-', '*', '/')) {
+                            expression = expression.dropLast(1)
+                        }
+                    }
+                }
                 expression += symbol
-                _state.value = Input(
+                _state.value = CalculatorState.Input(
                     expression = expression,
                     result = evaluate() ?: ""
                 )
