@@ -6,6 +6,7 @@ import com.shravan.calculator.CalculatorState.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import org.mariuszgromada.math.mxparser.Expression
+import java.math.BigDecimal
 
 class CalculatorViewModel: ViewModel() {
 
@@ -67,12 +68,9 @@ class CalculatorViewModel: ViewModel() {
         return if (result.isNaN() || result.isInfinite()) {
             null
         } else {
-            val resultString = result.toString()
-            if (resultString.endsWith(".0")) {
-                resultString.dropLast(2)
-            } else {
-                resultString
-            }
+            BigDecimal.valueOf(result)
+                .stripTrailingZeros()
+                .toPlainString()
         }
     }
 
