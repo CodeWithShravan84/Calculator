@@ -9,5 +9,7 @@ A simple, efficient, and user-friendly calculator application.
 * **Themes** It has Light theme and Dark theme.
 
 ## 🛠️ Technologies Used
-* **Language:** [e.g.Kotlin]
-* **Framework/UI:** [e.g., Android Studio, Jetpack compose]
+* **Language:** Kotlin
+* **UI Toolkit:** Jetpack Compose
+* **Architecture:** MVVM (Model-View-ViewModel) with MVI-style intent commands
+* **Math Evaluation:** mXparser library
